@@ -3,11 +3,13 @@ const express = require('express');
 const app = express()
 const PORT = 8000
 
-app.get('/', (req, res) => {
-
-  const nama = req.body.name
-  res.send(`Hello World ${nama}`)
-})
+app.post('/', (req, res) => {
+  const { name } = req.body;
+  if (!name) {
+    return res.status(400).send('Name is required');
+  }
+  res.send(`Hello, ${name}!`);
+});
 
 app.get('/about', (req, res) => {
   res.send('About route 🎉 ')
