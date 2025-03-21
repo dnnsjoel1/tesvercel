@@ -3,6 +3,10 @@ const express = require('express');
 const app = express()
 const PORT = 8000
 
+app.get('/', (req, res) => {
+  res.send('Hello World')
+})
+
 app.post('/', (req, res) => {
   const { name } = req.body;
   if (!name) {
